@@ -1,3 +1,3 @@
 function resize() {
-    lab.port.resize()
+    lab.on('resize')
 }

@@ -1,7 +1,7 @@
 const _port = {
     Z:     11,
     name: 'port',
-    DNA:  'SlideCameraNG',
+    DNA:  'XenoPort',
 
     resize: function() {
         this.w = ctx.width

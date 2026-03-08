@@ -5,6 +5,8 @@ const IDLE     = 1
 const UP       = 2
 const DOWN     = 3
 
+const DOWN_SHIFT = 2
+
 class Orb {
 
     constructor(st) {
@@ -55,7 +57,7 @@ class Orb {
             case DISABLED: img = rs.disabled; break;
             case IDLE:     img = this._hover? rs.up : rs.idle; break;
             case UP:       img = rs.up; break;
-            case DOWN:     img = rs.down; sh = 4; break;
+            case DOWN:     img = rs.down; sh = DOWN_SHIFT; break;
         }
 
         image( img, x + sh, y + sh, w - 2*sh, h - 2*sh)

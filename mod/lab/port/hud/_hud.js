@@ -9,8 +9,11 @@ const _hud = {
         return this.__.ly(y)
     },
 
-    pick: function() {
-    },
-    poke: function() {
+    expand: function() {
+        const view = this.__.view
+        this.x = 0
+        this.h = 0
+        this.w = view.w
+        this.h = view.h
     },
 }

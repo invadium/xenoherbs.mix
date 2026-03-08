@@ -28,6 +28,8 @@ class XenoPort extends sys.LabFrame {
         this.view.zoom = this.w / this.view.w
         this.view.h = this.h / this.view.zoom
         this.view.aspect = this.view.w / this.view.h
+        this.view.cx = .5 * this.view.w
+        this.view.cy = .5 * this.view.h
     }
 
     onResize() {

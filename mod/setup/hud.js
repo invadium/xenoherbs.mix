@@ -1,9 +1,16 @@
 function hud() {
     const _ = lab.port.hud
 
-    _.spawn('Starfield')
+    // space
+    _.spawn('Starfield', {
+        Z: 1,
+    })
+    _.spawn('Planet', {
+        Z: 2,
+    })
 
     _.spawn('XenoPanel', {
+        Z: 21,
         x: 0,
         y: 0,
         w: 640,
@@ -16,10 +23,11 @@ function hud() {
     })
 
     _.spawn('Orb', {
-        x: 320,
-        y: 240,
-        w: 40,
-        h: 40,
+        Z: 101,
+        x: 40,
+        y: 400,
+        w: 20,
+        h: 20,
 
         onClick: function() {
             trap('state/credits')

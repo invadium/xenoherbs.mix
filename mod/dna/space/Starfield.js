@@ -78,6 +78,7 @@ class Starfield {
         translate(x + W, y + H)
         ctx.lineCap = 'round'
 
+        const color = '#eecfee'
         for (let i = stars.length - 1; i >= 0; i--) {
             const star = stars[i]
             if (star.z > -100) {
@@ -95,7 +96,7 @@ class Starfield {
                         px = star.x/(star.z + dz) * W
                         py = star.y/(star.z + dz) * H
 
-                        stroke('#ffffff')
+                        stroke(color)
                         lineWidth(2 * size)
                         if (isNaN(px) || isNaN(py) || isNaN(sx) || isNaN(sy)) debugger
                         line(px, py, sx, sy)
@@ -107,7 +108,7 @@ class Starfield {
                 if (px - size < -W || px + size > W || py - size < -H || py + size > H) {
                     star.z = -101
                 } else {
-                    fill('#ffffff')
+                    fill(color)
                     circle(sx, sy, size)
                 }
             }

@@ -1,7 +1,8 @@
 const tune = {
     seed: {
         cosmology: 101,
-        trip:      201,
+        stars:     201,
+        trip:      420,
     },
 
     title: {

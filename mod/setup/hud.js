@@ -1,6 +1,8 @@
 function hud() {
     const _ = lab.port.hud
 
+    _.spawn('Starfield')
+
     _.spawn('XenoPanel', {
         x: 0,
         y: 0,

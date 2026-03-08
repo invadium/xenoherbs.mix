@@ -27,37 +27,38 @@ class Orb {
     }
 
     onMouseUp() {
-        this.toggled = false
-        this.state = IDLE
     }
 
     onMouseMove() {}
 
-    onMouseEnter() {
-    }
+    onMouseDrag() {}
+
+    onMouseEnter() {}
 
     onMouseExit() {
         this.toggled = false
         this.state = IDLE
     }
 
-    onClick() {
-        log('clicked')
+    onMouseRelease() {
     }
+
+    onClick() {}
 
     draw() {
         const { x, y, w, h, state } = this
+        let sh = 0
 
         let img
         const rs = res.hud.orb
         switch(state) {
             case DISABLED: img = rs.disabled; break;
             case IDLE:     img = this._hover? rs.up : rs.idle; break;
-            case UP:       img = rs.up;       break;
-            case DOWN:     img = rs.down;     break;
+            case UP:       img = rs.up; break;
+            case DOWN:     img = rs.down; sh = 4; break;
         }
 
-        image( img, x, y, w, h )
+        image( img, x + sh, y + sh, w - 2*sh, h - 2*sh)
     }
 
 }

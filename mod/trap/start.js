@@ -1,3 +1,7 @@
 function start() {
-    trap('state/title')
+    if (env.config.warp) {
+        trap('newGame')
+    } else {
+        trap('state/title')
+    }
 }

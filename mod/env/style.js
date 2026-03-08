@@ -1,8 +1,9 @@
 const style = {
 
     color: {
-        main:  hsl(.5, .5, .5),
-        title: hsl(.2, .5, .5),
+        main:     hsl(.22, .89, .67),
+        title:    hsl(.28, .5, .5),
+        subTitle: hsl(.69, .5, .5),
 
         credits: {
             back:  hsl(.15, .2, .2),
@@ -12,12 +13,17 @@ const style = {
 
     font: {
         main: {
-            family: 'helvetiHand',
+            //family: 'helvetiHand',
+            family: 'komikab',
             size:   24,
         },
         title: {
             family: 'graffitiDesiderium',
             size:   64,
+        },
+        subTitle: {
+            family: 'graffitiDesiderium',
+            size:   48,
         },
         credits: {
             family: 'komikab',

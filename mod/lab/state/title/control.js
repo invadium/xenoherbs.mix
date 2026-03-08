@@ -9,7 +9,7 @@ function next() {
     if (!this.startedAt) return
 
     this.startedAt = 0
-    trap('state/bridge')
+    trap('newGame')
 }
 
 function evo(dt) {

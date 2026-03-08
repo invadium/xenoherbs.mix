@@ -1,20 +1,18 @@
-const df = {
-    name:          'statusBar',
-    message:       '',
-    color:         hsl(.14, .4, .5),
-    background:    '#000000C0',
-    margin:        8,
-    hideWhenEmpty: false,
-}
-
 class StatusBar {
 
     constructor(st) {
-        extend(this, df, st)
+        extend(this, {
+            name:          'statusBar',
+            message:       '',
+            color:         hsl(.14, .4, .5),
+            background:    '#000000C0',
+            margin:        8,
+            hideWhenEmpty: false,
+        }, st)
     }
 
     draw() {
-        const message = env.status || this.message
+        const message = env.hint || env.status || this.message
         if (this.hideWhenEmpty && !message) return
 
         const f = env.style.font.main

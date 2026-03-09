@@ -1,3 +1,42 @@
+function generateOrbs(_, tank) {
+    const orb1L = _.spawn('Orb', {
+        Z: 101,
+        x: 0,
+        y: 0,
+
+        type: dna.hud.Orb.GREEN,
+        hint: 'burn downers',
+
+        onClick: function() {
+            console.dir(this.tank)
+        },
+    })
+    tank.bindLeftOrb(orb1L)
+    const orb1R = _.spawn('Orb', {
+        Z: 101,
+        x: 0,
+        y: 0,
+
+        type: dna.hud.Orb.PINK,
+        hint: 'burn uppers',
+
+        onClick: function() {
+            console.dir(this.tank)
+        },
+    })
+    tank.bindRightOrb(orb1R)
+
+    tank.adjust = function() {
+        this.adjustY()
+
+        this.leftOrb.x = this.x + .5 * this.w - 1.2 * this.leftOrb.w
+        this.leftOrb.y = this.y + this.h + 5
+
+        this.rightOrb.x = this.x + .5 * this.w + .2 * this.rightOrb.w
+        this.rightOrb.y = this.y + this.h + 5
+    }
+}
+
 function hud() {
     const _ = lab.port.hud
     _.expand()
@@ -70,25 +109,12 @@ function hud() {
 
         hint: 'navigator',
 
-        adjust: function() {
+        adjustY: function() {
             const edge = lab.port.lx(45)
             this.y = _.h - this.h - 45 - edge
-            this.orb.x = this.x + .5 * this.w - .5 * this.orb.w
-            this.orb.y = this.y + this.h
         }
     })
-    const orb1 = _.spawn('Orb', {
-        Z: 101,
-        x: 0,
-        y: 0,
-
-        hint: 'burn uppers',
-
-        onClick: function() {
-            console.dir(this.tank)
-        },
-    })
-    tank1.bindOrb(orb1)
+    generateOrbs(_, tank1)
     tank1.spawn('Alien', {
         species: 'purpleDJ',
     })
@@ -101,25 +127,12 @@ function hud() {
 
         hint: 'science officer',
 
-        adjust: function() {
+        adjustY: function() {
             const edge = lab.port.lx(45)
             this.y = _.h - this.h - 30 - edge
-            this.orb.x = this.x + .5 * this.w - .5 * this.orb.w
-            this.orb.y = this.y + this.h
-        }
-    })
-    const orb2 = _.spawn('Orb', {
-        Z: 101,
-        x: 0,
-        y: 0,
-
-        hint: 'burn uppers',
-
-        onClick: function() {
-            console.dir(this.tank)
         },
     })
-    tank2.bindOrb(orb2)
+    generateOrbs(_, tank2)
     tank2.spawn('Alien', {
         species: 'blueDJ',
     })
@@ -132,25 +145,12 @@ function hud() {
 
         hint: 'engineer',
 
-        adjust: function() {
+        adjustY: function() {
             const edge = lab.port.lx(45)
             this.y = _.h - this.h - 45 - edge
-            this.orb.x = this.x + .5 * this.w - .5 * this.orb.w
-            this.orb.y = this.y + this.h
         }
     })
-    const orb3 = _.spawn('Orb', {
-        Z: 101,
-        x: 0,
-        y: 0,
-
-        hint: 'burn uppers',
-
-        onClick: function() {
-            console.dir(this.tank)
-        },
-    })
-    tank3.bindOrb(orb3)
+    generateOrbs(_, tank3)
     tank3.spawn('Alien', {
         species: 'greenGoblin',
     })
@@ -162,25 +162,13 @@ function hud() {
 
         hint: 'guest',
 
-        adjust: function() {
+        adjustY: function() {
             const edge = lab.port.lx(45)
             this.y = _.h - this.h - 20 - edge
-            this.orb.x = this.x + .5 * this.w - .5 * this.orb.w
-            this.orb.y = this.y + this.h
         }
-    })
-    const orb4 = _.spawn('Orb', {
-        Z: 101,
-        x: 0,
-        y: 0,
 
-        hint: 'burn uppers',
-
-        onClick: function() {
-            console.dir(this.tank)
-        },
     })
-    tank4.bindOrb(orb4)
+    generateOrbs(_, tank4)
     tank4.spawn('Alien', {
         species: 'yellowMushroom',
     })

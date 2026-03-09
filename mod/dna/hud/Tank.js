@@ -20,8 +20,16 @@ class Tank extends LabFrame {
         }, st) )
     }
 
-    bindOrb(orb) {
-        this.orb = orb
+    adjust() {}
+
+    bindLeftOrb(orb) {
+        this.leftOrb = orb
+        orb.tank = this
+        this.adjust()
+    }
+
+    bindRightOrb(orb) {
+        this.rightOrb = orb
         orb.tank = this
         this.adjust()
     }

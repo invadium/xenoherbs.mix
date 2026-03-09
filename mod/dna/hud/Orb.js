@@ -7,11 +7,17 @@ const DOWN     = 3
 
 const DOWN_SHIFT = 2
 
+const RED    = 1
+const GREEN  = 2
+const YELLOW = 3
+const PINK   = 4
+
 class Orb {
 
     constructor(st) {
         augment(this, {
             name: 'orb' + (++id),
+            type: RED,
             x:    0,
             y:    0,
             w:    15,
@@ -50,13 +56,18 @@ class Orb {
     onClick() {}
 
     draw() {
-        const { x, y, w, h, state } = this
+        const { x, y, w, h, type, state } = this
         let sh = 0
 
-        let img
-        const rs = res.hud.orb
+        let img, rs
+        switch(type) {
+            case RED:    rs = res.hud.orb.red;    break;
+            case GREEN:  rs = res.hud.orb.green;  break;
+            case YELLOW: rs = res.hud.orb.yellow; break;
+            case PINK:   rs = res.hud.orb.pink;   break;
+        }
         switch(state) {
-            case DISABLED: img = rs.disabled; break;
+            case DISABLED: img = res.hud.orb.disabled; break;
             case IDLE:     img = this._hover? rs.up : rs.idle; break;
             case UP:       img = rs.up; break;
             case DOWN:     img = rs.down; sh = DOWN_SHIFT; break;
@@ -66,3 +77,7 @@ class Orb {
     }
 
 }
+Orb.RED    = RED
+Orb.GREEN  = GREEN
+Orb.YELLOW = YELLOW
+Orb.PINK   = PINK

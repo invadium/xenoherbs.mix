@@ -9,8 +9,8 @@ class Tank extends LabFrame {
             name: 'tank' + (++id),
             x:     0,
             y:     0,
-            w:     100,
-            h:     100,
+            w:     80,
+            h:     120,
 
             puffs: [],
 

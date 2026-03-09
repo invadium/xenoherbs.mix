@@ -42,8 +42,6 @@ function hud() {
     const tank1 = _.spawn('Tank', {
         x: 120,
         y: 0,
-        w: 100,
-        h: 100,
 
         hint: 'navigator',
 
@@ -80,6 +78,34 @@ function hud() {
             trap('state/credits')
         },
     })
+
+    const tank2 = _.spawn('Tank', {
+        x: 420,
+        y: 0,
+
+        hint: 'engineer',
+
+        adjust: function() {
+            this.y = _.h - 200
+            this.orb.x = this.x + .5 * this.w - .5 * this.orb.w
+            this.orb.y = this.y + this.h + 20
+        }
+    })
+    const orb2 = _.spawn('Orb', {
+        Z: 101,
+        x: 0,
+        y: 0,
+        w: 20,
+        h: 20,
+
+        hint: 'burn uppers',
+
+        onClick: function() {
+            console.dir(this.tank)
+        },
+    })
+    tank2.bindOrb(orb1)
+    tank2.spawn('Alien')
 
     _.adjust()
 }

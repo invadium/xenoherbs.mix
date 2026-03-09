@@ -15,7 +15,7 @@ class GLevel {
             h:      1,
 
             MAX_LEVEL:   420,
-            BURN_RATE:   20,
+            BURN_RATE:   10,
             REFILL_RATE: 20,
 
             _centered: false,

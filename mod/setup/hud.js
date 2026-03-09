@@ -65,7 +65,9 @@ function hud() {
         },
     })
     tank1.bindOrb(orb1)
-    tank1.spawn('Alien')
+    tank1.spawn('Alien', {
+        species: 'purpleDJ',
+    })
 
     _.spawn('Orb', {
         Z: 101,
@@ -104,8 +106,10 @@ function hud() {
             console.dir(this.tank)
         },
     })
-    tank2.bindOrb(orb1)
-    tank2.spawn('Alien')
+    tank2.bindOrb(orb2)
+    tank2.spawn('Alien', {
+        species: 'greenGoblin',
+    })
 
     _.adjust()
 }

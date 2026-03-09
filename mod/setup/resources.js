@@ -6,12 +6,12 @@ function processImage(img, jshader) {
     })
 
     const pipeline = new dna.juicer.Pipeline({
-        name: 'sepiaFilter',
+        name: 'pinkSlime',
 
         init: function() {
             this.bindChannel(img, 1)
             this.attachShader(
-                chain(lib.juicer.plainImage, lib.juicer.filters.slimezator), {
+                chain(lib.juicer.plainImage, lib.juicer.filters.yellowizator), {
                     source: 1,
                 }
             )
@@ -37,6 +37,10 @@ function resources() {
         if (newImg) {
             puff.attach(newImg)
         }
+    })
+
+    res.alien._ls.forEach((e, i) => {
+        e.id = i
     })
 }
 resources.Z = 3

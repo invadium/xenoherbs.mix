@@ -17,7 +17,8 @@ class Planet {
             r:     1,
 
             hint:  'planet',
-            _centered: true,
+            _centered:  true,
+            _ignorable: false,
         }, st)
     }
 
@@ -64,10 +65,12 @@ class Planet {
 
         if (z >= 0) {
             scale = (1 - z) * R
+            this._ignorable = false
         } else {
             dx = (-z) * view.w
             dy = (-z) * view.h
             scale = (-z*8 + 1) * R
+            this._ignorable = true
         }
 
         this.x = view.cx + dx

@@ -18,6 +18,12 @@ class Tank {
         }, st)
     }
 
+    bindOrb(orb) {
+        this.orb = orb
+        orb.tank = this
+        this.adjust()
+    }
+
     repuff(puff) {
         puff.at = env.time
         puff.x  = rnd()
@@ -45,7 +51,7 @@ class Tank {
     drawPuffs() {
         const { x, y, w, h } = this
         const puffs = this.puffs
-        const smoke = res.fx.smoke
+        const smoke = res.fx.puff._ls
 
         save()
         alpha(.5)

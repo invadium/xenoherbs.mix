@@ -29,6 +29,8 @@ class Orb {
     }
 
     onMouseUp() {
+        this.toggled = false
+        this.state = IDLE
     }
 
     onMouseMove() {}

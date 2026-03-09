@@ -14,8 +14,8 @@ class Orb {
             name: 'orb' + (++id),
             x:    0,
             y:    0,
-            w:    40,
-            h:    40,
+            w:    15,
+            h:    15,
 
             state: IDLE,
 

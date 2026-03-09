@@ -9,8 +9,8 @@ class Tank extends LabFrame {
             name: 'tank' + (++id),
             x:     0,
             y:     0,
-            w:     80,
-            h:     120,
+            w:     60,
+            h:     80,
 
             puffs: [],
 
@@ -53,7 +53,9 @@ class Tank extends LabFrame {
     drawPuffs() {
         const { x, y, w, h } = this
         const puffs = this.puffs
-        const smoke = res.fx.puff._ls
+
+        // TODO select from the proper type
+        const vape = res.vape.green._ls
 
         save()
         alpha(.5)
@@ -61,7 +63,7 @@ class Tank extends LabFrame {
         for (let i = puffs.length - 1; i >= 0; i--) {
             const p = puffs[i]
             const t = env.time - p.at
-            const icell = ((t * 15) | 0) % smoke.length
+            const icell = ((t * 15) | 0) % vape.length
             const sx = p.x * (w + 2*PW)
             const ry = (1 - (t * p.s))
             const sy = ry * (h + 2*PW) - PW
@@ -69,7 +71,7 @@ class Tank extends LabFrame {
             if (ry < 0) {
                 p.at = -1
             } else {
-                const img = smoke[icell]
+                const img = vape[icell]
                 sprite( img, sx, sy, PW, PW )
             }
         }

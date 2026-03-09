@@ -6,4 +6,8 @@ function evo(dt) {
     ls.forEach(e => {
         if (e.hint) env.hint = e.hint
     })
+
+    if (!env.hint) {
+        env.hint = '@' + mouse.x + ':' + mouse.y
+    }
 }

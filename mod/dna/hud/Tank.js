@@ -1,0 +1,91 @@
+const PW = 100
+
+let id = 0
+
+class Tank {
+
+    constructor(st) {
+        augment(this, {
+            name: 'tank' + (++id),
+            x:     0,
+            y:     0,
+            w:     100,
+            h:     100,
+
+            puffs: [],
+
+            puffFQ: 5,
+        }, st)
+    }
+
+    repuff(puff) {
+        puff.at = env.time
+        puff.x  = rnd()
+        puff.y  = 1
+        puff.s  = .02 + .05 * rnd()
+    }
+
+    puff() {
+        const puffs = this.puffs
+
+        for (let i = puffs.length - 1; i >= 0; i--) {
+            const p = puffs[i]
+            if (p.at < 0) return this.repuff(p)
+        }
+
+        const p = {}
+        this.puffs.push(p)
+        this.repuff(p)
+    }
+
+    evo(dt) {
+        if (rnd() < this.puffFQ * dt) this.puff()
+    }
+
+    drawPuffs() {
+        const { x, y, w, h } = this
+        const puffs = this.puffs
+        const smoke = res.fx.smoke
+
+        save()
+        alpha(.5)
+
+        for (let i = puffs.length - 1; i >= 0; i--) {
+            const p = puffs[i]
+            const t = env.time - p.at
+            const icell = ((t * 15) | 0) % smoke.length
+            const sx = p.x * (w + 2*PW)
+            const ry = (1 - (t * p.s))
+            const sy = ry * (h + 2*PW) - PW
+
+            if (ry < 0) {
+                p.at = -1
+            } else {
+                const img = smoke[icell]
+                sprite( img, sx, sy, PW, PW )
+            }
+        }
+
+        restore()
+    }
+
+    draw() {
+        const { x, y, w, h } = this
+
+        save()
+        translate(x, y)
+
+        ctx.roundRect(0, 0, w, h, 3)
+        ctx.clip()
+
+        this.drawPuffs()
+
+        lineWidth(4)
+        stroke(.61, .15, .6)
+        ctx.roundRect(0, 0, w, h, 3)
+        ctx.stroke()
+
+        restore()
+    }
+
+}

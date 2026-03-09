@@ -55,11 +55,19 @@ class GLevel {
               sw = herbImg.width,
               sh = herbImg.height - sy
 
-        stroke(.15, .7, .7)
-        lineWidth(1)
-        rect(x, y, w, h)
+        save()
+
+        ctx.roundRect(x, y, w, h, 3)
+        ctx.clip()
 
         image(herbImg, 0, sy, sw, sh, x, y + h - hh, w, hh)
+
+        lineWidth(4)
+        stroke(.61, .15, .6)
+        ctx.roundRect(x, y, w, h, 3)
+        ctx.stroke()
+
+        restore()
     }
 
 }

@@ -35,6 +35,17 @@ function hud() {
         }
     })
 
+    _.spawn('Tank', {
+        x: 120,
+        y: 0,
+        w: 100,
+        h: 100,
+
+        adjust: function() {
+            this.y = _.h - 200
+        }
+    })
+
     _.spawn('Orb', {
         Z: 101,
         x: 40,

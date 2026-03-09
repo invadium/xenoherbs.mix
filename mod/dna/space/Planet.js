@@ -42,7 +42,13 @@ class Planet {
 
     evo(dt) {
         const zspeed = .5 * this.__.starfield.zspeed
-        this.z -= zspeed * dt
+        if (this.z >= 0) {
+            // standard approach
+            this.z -= zspeed * dt
+        } else {
+            // leaving the orbit - move slower
+            this.z -= .5 * zspeed * dt
+        }
         if (this.z < -1) {
             this.nextType()
             this.z = 2 + 5 * rnd()

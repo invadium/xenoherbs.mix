@@ -74,25 +74,27 @@ function hud() {
         w: 25,
         h: 100,
 
-        hint: 'herbs stash', 
+        type: dna.hud.GLevel.UPPER,
+        hint: 'uppers stash', 
 
         adjust: function() {
             const edge = lab.port.lx(45)
-            this.y = _.h - this.h - edge - 40
+            this.y = _.h - this.h - edge - 60
         }
     })
 
     const level2 = _.spawn('GLevel', {
-        x: 40,
+        x: 50,
         y: 0,
         w: 25,
         h: 100,
 
-        hint: 'herbs stash', 
+        type: dna.hud.GLevel.DOWNER,
+        hint: 'downers stash', 
 
         adjust: function() {
             const edge = lab.port.lx(45)
-            this.y = _.h - this.h - edge - 20
+            this.y = _.h - this.h - edge - 30
         }
     })
 

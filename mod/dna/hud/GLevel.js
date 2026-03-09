@@ -1,8 +1,12 @@
+const DOWNER = 1
+const UPPER  = 2
+
 class GLevel {
 
     constructor(st) {
         augment(this, {
             name:  'glevel',
+            type:   UPPER,
             level:  0,
 
             x:      0,
@@ -49,7 +53,12 @@ class GLevel {
 
     draw() {
         const { x, y, w, h, level, MAX_LEVEL } = this
-        const herbImg = res.hud.level.herb
+
+        let herbImg
+        switch(this.type) {
+            case DOWNER: herbImg = res.hud.level.downer; break;
+            case UPPER:  herbImg = res.hud.level.upper;  break;
+        }
 
         const v  = level / MAX_LEVEL,
               hh = v * h,
@@ -73,3 +82,5 @@ class GLevel {
     }
 
 }
+GLevel.DOWNER = DOWNER
+GLevel.UPPER  = UPPER

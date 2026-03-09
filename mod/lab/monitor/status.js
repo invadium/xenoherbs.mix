@@ -7,7 +7,10 @@ function evo(dt) {
         if (e.hint) env.hint = e.hint
     })
 
+    /*
+    // screen coordinate dump
     if (!env.hint) {
         env.hint = '@' + mouse.x + ':' + mouse.y
     }
+    */
 }

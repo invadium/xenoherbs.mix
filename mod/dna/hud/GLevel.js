@@ -14,7 +14,9 @@ class GLevel {
             w:      1,
             h:      1,
 
-            MAX_LEVEL: 420,
+            MAX_LEVEL:   420,
+            BURN_RATE:   20,
+            REFILL_RATE: 20,
 
             _centered: false,
         }, st)
@@ -25,7 +27,7 @@ class GLevel {
         return (this.MAX_LEVEL - this.level)
     }
 
-    refill(amount) {
+    resupply(amount) {
         const capacity = this.capacity()
         if (amount <= capacity) {
             this.level += amount
@@ -49,6 +51,16 @@ class GLevel {
 
     contains(amount) {
         return (this.level >= amount)
+    }
+
+    burn(dt) {
+        const request = this.BURN_RATE * dt
+        return this.consume(request)
+    }
+
+    refill(dt) {
+        const qty = this.REFILL_RATE * dt
+        return this.resupply(qty)
     }
 
     draw() {

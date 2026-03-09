@@ -32,11 +32,13 @@ class Orb {
     onMouseDown() {
         this.toggled = true
         this.state = DOWN
+        this.onDown()
     }
 
     onMouseUp() {
         this.toggled = false
         this.state = IDLE
+        this.onUp()
     }
 
     onMouseMove() {}
@@ -48,12 +50,16 @@ class Orb {
     onMouseExit() {
         this.toggled = false
         this.state = IDLE
+        this.onUp()
     }
 
-    onMouseRelease() {
-    }
+    onMouseRelease() {}
 
     onClick() {}
+
+    onDown() {}
+
+    onUp() {}
 
     draw() {
         const { x, y, w, h, type, state } = this

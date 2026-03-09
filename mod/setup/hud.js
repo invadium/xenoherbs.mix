@@ -1,4 +1,6 @@
 function generateOrbs(_, tank) {
+    tank.bindShip(pin.ship)
+
     const orb1L = _.spawn('Orb', {
         Z: 101,
         x: 0,
@@ -7,9 +9,11 @@ function generateOrbs(_, tank) {
         type: dna.hud.Orb.GREEN,
         hint: 'burn downers',
 
-        onClick: function() {
-            console.dir(this.tank)
-        },
+        evo(dt) {
+            if (this.toggled) {
+                this.tank.burnDowner(dt)
+            }
+        }
     })
     tank.bindLeftOrb(orb1L)
     const orb1R = _.spawn('Orb', {
@@ -20,9 +24,11 @@ function generateOrbs(_, tank) {
         type: dna.hud.Orb.PINK,
         hint: 'burn uppers',
 
-        onClick: function() {
-            console.dir(this.tank)
-        },
+        evo(dt) {
+            if (this.toggled) {
+                this.tank.burnUpper(dt)
+            }
+        }
     })
     tank.bindRightOrb(orb1R)
 
@@ -53,6 +59,9 @@ function hud() {
     })
     pin.link(planet)
 
+    const ship = lab.port.spawn('Ship')
+    pin.link(ship)
+
     _.spawn('XenoPanel', {
         Z: 21,
         x: 0,
@@ -68,7 +77,8 @@ function hud() {
         }
     })
 
-    const level1 = _.spawn('GLevel', {
+    const upperStash = _.spawn('GLevel', {
+        name: 'upperStash',
         x: 10,
         y: 0,
         w: 25,
@@ -82,8 +92,10 @@ function hud() {
             this.y = _.h - this.h - edge - 60
         }
     })
+    ship.link(upperStash)
 
-    const level2 = _.spawn('GLevel', {
+    const downerStash = _.spawn('GLevel', {
+        name: 'downerStash',
         x: 50,
         y: 0,
         w: 25,
@@ -97,6 +109,7 @@ function hud() {
             this.y = _.h - this.h - edge - 30
         }
     })
+    ship.link(downerStash)
 
     
     // =============

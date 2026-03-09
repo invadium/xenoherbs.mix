@@ -20,6 +20,10 @@ class Tank extends LabFrame {
 
     adjust() {}
 
+    bindShip(ship) {
+        this.ship = ship
+    }
+
     bindLeftOrb(orb) {
         this.leftOrb = orb
         orb.tank = this
@@ -30,6 +34,14 @@ class Tank extends LabFrame {
         this.rightOrb = orb
         orb.tank = this
         this.adjust()
+    }
+
+    burnUpper(dt) {
+        this.ship.upperStash.burn(dt)
+    }
+
+    burnDowner(dt) {
+        this.ship.downerStash.burn(dt)
     }
 
     draw() {

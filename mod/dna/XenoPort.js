@@ -86,6 +86,10 @@ class XenoPort extends sys.LabFrame {
         v[1] = (v[1] - this.y)/this.view.zoom + this.view.y
     }
 
+    getDisplayList() {
+        return this._ls
+    }
+
     pick(x, y, list, opt) {
         // test coordinates against viewport
         if (x < this.x || x > this.x + this.w || y < this.y || y > this.y + this.h) return

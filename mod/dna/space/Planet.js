@@ -2,13 +2,22 @@ class Planet {
 
     constructor(st) {
         augment(this, {
+            name: 'planet',
             type: -1,
+
+
             rx:    0,
             ry:    0,
             z:     1,
-            r:     100,
+            R:     100,
 
-            zspeed: 0.1,
+            // the screen coordinates and radius are dynamically calculated in draw()
+            x:     0,
+            y:     0,
+            r:     1,
+
+            hint:  'planet',
+            _centered: true,
         }, st)
     }
 
@@ -40,7 +49,7 @@ class Planet {
     }
 
     draw() {
-        const { r, z } = this
+        const { R, z } = this
         if (z < -1 || z > 1) return
 
         const view = lab.port.view
@@ -51,16 +60,19 @@ class Planet {
 
         let dx = 0,
             dy = 0,
-            scale = r
+            scale = R
 
         if (z >= 0) {
-            scale = (1 - z) * r
+            scale = (1 - z) * R
         } else {
             dx = (-z) * view.w
             dy = (-z) * view.h
-            scale = (-z*8 + 1) * r
+            scale = (-z*8 + 1) * R
         }
 
+        this.x = view.cx + dx
+        this.y = view.cy + dy
+        this.r = scale
         sprite(tex, dx, dy, scale, scale)
 
         restore()

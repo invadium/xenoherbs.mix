@@ -10,6 +10,8 @@ class Starfield {
 
             zspeed: .1,
             stars:  [],
+
+            _ignorable: true,
         }, st)
     }
 

@@ -2,12 +2,14 @@ function hud() {
     const _ = lab.port.hud
 
     // space
-    _.spawn('Starfield', {
+    const starfield = _.spawn('Starfield', {
         Z: 1,
     })
-    _.spawn('Planet', {
+    pin.link(starfield)
+    const planet = _.spawn('Planet', {
         Z: 2,
     })
+    pin.link(planet)
 
     _.spawn('XenoPanel', {
         Z: 21,
@@ -30,6 +32,8 @@ function hud() {
         w: 35,
         h: 120,
 
+        hint: 'herbs stash', 
+
         adjust: function() {
             this.y = _.h - 200
         }
@@ -41,7 +45,7 @@ function hud() {
         w: 100,
         h: 100,
 
-        hint: 'Navigator',
+        hint: 'navigator',
 
         adjust: function() {
             this.y = _.h - 200
@@ -55,6 +59,8 @@ function hud() {
         y: 0,
         w: 20,
         h: 20,
+
+        hint: 'burn uppers',
 
         onClick: function() {
             console.dir(this.tank)

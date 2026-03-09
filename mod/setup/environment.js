@@ -6,5 +6,6 @@ function environment() {
             env[e] = env.config[e]
         }
     }
+    job.spawn(dna.kinetix.Kinetix)
 }
 environment.Z = 1

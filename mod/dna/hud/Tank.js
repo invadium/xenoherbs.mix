@@ -15,6 +15,8 @@ class Tank extends LabFrame {
             puffs: [],
 
             puffFQ: 5,
+
+            _centered: false,
         }, st) )
     }
 

@@ -11,6 +11,8 @@ class GLevel {
             h:      1,
 
             MAX_LEVEL: 420,
+
+            _centered: false,
         }, st)
         this.level = this.level || this.MAX_LEVEL
     }

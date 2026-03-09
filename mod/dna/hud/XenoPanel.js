@@ -11,6 +11,8 @@ class XenoPanel {
             h:     100,
 
             color: hsl(.45, .5, .5),
+
+            _centered: false,
         }, st)
     }
 

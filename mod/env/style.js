@@ -2,8 +2,8 @@ const style = {
 
     color: {
         main:     hsl(.22, .89, .67),
-        title:    hsl(.28, .5, .5),
-        subTitle: hsl(.69, .5, .5),
+        title:    hsl(.28, .9, .7),
+        subTitle: hsl(.11, .7, .7),
 
         credits: {
             back:  hsl(.15, .2, .2),

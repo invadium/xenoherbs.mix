@@ -1,0 +1,65 @@
+class GLevel {
+
+    constructor(st) {
+        augment(this, {
+            name:  'glevel',
+            level:  0,
+
+            x:      0,
+            y:      0,
+            w:      1,
+            h:      1,
+
+            MAX_LEVEL: 420,
+        }, st)
+        this.level = this.level || this.MAX_LEVEL
+    }
+
+    capacity() {
+        return (this.MAX_LEVEL - this.level)
+    }
+
+    refill(amount) {
+        const capacity = this.capacity()
+        if (amount <= capacity) {
+            this.level += amount
+            return 0
+        } else {
+            this.level = this.MAX_LEVEL
+            return amount - capacity
+        }
+    }
+
+    consume(amount) {
+        if (amount <= this.level) {
+            this.level -= amount
+            return 0
+        } else {
+            const missing = amount - this.level
+            this.level = 0
+            return missing
+        }
+    }
+
+    contains(amount) {
+        return (this.level >= amount)
+    }
+
+    draw() {
+        const { x, y, w, h, level, MAX_LEVEL } = this
+        const herbImg = res.hud.level.herb
+
+        const v  = level / MAX_LEVEL,
+              hh = v * h,
+              sy = (1 - v) * herbImg.height,
+              sw = herbImg.width,
+              sh = herbImg.height - sy
+
+        stroke(.15, .7, .7)
+        lineWidth(1)
+        rect(x, y, w, h)
+
+        image(herbImg, 0, sy, sw, sh, x, y + h - hh, w, hh)
+    }
+
+}

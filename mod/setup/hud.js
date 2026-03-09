@@ -16,9 +16,22 @@ function hud() {
         w: 640,
         h: 480,
 
+        hidden: true,
+
         adjust: function() {
             const vw = lab.port.view
             this.y = .5 * (vw.h - this.h)
+        }
+    })
+
+    _.spawn('GLevel', {
+        x: 20,
+        y: 0,
+        w: 35,
+        h: 120,
+
+        adjust: function() {
+            this.y = _.h - 200
         }
     })
 

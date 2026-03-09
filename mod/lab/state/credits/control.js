@@ -1,6 +1,6 @@
 function onActivate() {
     this.startedAt = env.time
-    lab.background = res.background.alienFilaments
+    lab.background = res.background.circles
 
     // TODO clean up old credits roll
     // ...

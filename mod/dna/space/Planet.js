@@ -2,7 +2,7 @@ class Planet {
 
     constructor(st) {
         augment(this, {
-            type:  0,
+            type: -1,
             rx:    0,
             ry:    0,
             z:     1,
@@ -12,12 +12,22 @@ class Planet {
         }, st)
     }
 
+    init() {
+        this.randomType()
+    }
+
     setType(type) {
-        this.type = type % res.planets._ls.length
+        this.type = (type | 0) % res.planets._ls.length
     }
 
     nextType() {
         this.setType(this.type + 1)
+    }
+
+    randomType() {
+        let nextType = lib.source.cosmology.rndi(res.planets._ls)
+        if (this.type === nextType) nextType ++
+        this.setType(nextType)
     }
 
     evo(dt) {

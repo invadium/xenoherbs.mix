@@ -41,6 +41,8 @@ function hud() {
         w: 100,
         h: 100,
 
+        hint: 'Navigator',
+
         adjust: function() {
             this.y = _.h - 200
             this.orb.x = this.x + .5 * this.w - .5 * this.orb.w
@@ -59,6 +61,7 @@ function hud() {
         },
     })
     tank1.bindOrb(orb1)
+    tank1.spawn('Alien')
 
     _.spawn('Orb', {
         Z: 101,

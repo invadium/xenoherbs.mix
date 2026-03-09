@@ -2,10 +2,10 @@ const PW = 100
 
 let id = 0
 
-class Tank {
+class Tank extends LabFrame {
 
     constructor(st) {
-        augment(this, {
+        super( augment({
             name: 'tank' + (++id),
             x:     0,
             y:     0,
@@ -15,7 +15,7 @@ class Tank {
             puffs: [],
 
             puffFQ: 5,
-        }, st)
+        }, st) )
     }
 
     bindOrb(orb) {
@@ -83,6 +83,8 @@ class Tank {
 
         ctx.roundRect(0, 0, w, h, 3)
         ctx.clip()
+
+        super.draw()
 
         this.drawPuffs()
 
